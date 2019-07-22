@@ -59,7 +59,7 @@ ColumnLimit:     80
 #     Priority:        1
 # IncludeIsMainRegex: '$'
 # IndentCaseLabels: false
-# IndentWidth:     2
+IndentWidth:     4
 # IndentWrappedFunctionNames: false
 # JavaScriptQuotes: Leave
 # JavaScriptWrapImports: true

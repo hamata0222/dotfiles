@@ -1,0 +1,27 @@
+[user]
+    name = Hiroshi Hamada
+    email = 
+
+[core]
+    whitespace = cr-at-eol
+
+[diff]
+    tool = WinMerge
+[difftool "WinMerge"]
+    path = C:/Program Files/WinMerge/WinMergeU.exe
+#    cmd = \"C:/Program Files/WinMerge/WinMergeU.exe\" -f \"*.*\" -e -u -r \"$LOCAL\" \"$REMOTE\"
+    cmd = \"C:/Program Files/WinMerge/WinMergeU.exe\" -e -r -u -x -wl -dl \"before/$MERGED\" -dr \"after/$MERGED\" \"$LOCAL\" \"$REMOTE\"
+    trustExitCode = false
+[merge]
+    tool = WinMerge
+    ff = false
+[mergetool "WinMerge"]
+    path = C:/Program Files/WinMerge/WinMergeU.exe
+    cmd = \"C:/Program Files/WinMerge/WinMergeU.exe\" -e -u \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+[alias]
+    windiff = difftool -y -d -t WinMerge
+    winmerge = mergetool -y -t WinMerge
+    logg = log --name-only
+    difff = diff --name-only
+    diffname = diff --name-only --relative
+    ls = ls-files

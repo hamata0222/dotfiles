@@ -11,6 +11,7 @@
     path = C:/Program Files/WinMerge/WinMergeU.exe
 #    cmd = \"C:/Program Files/WinMerge/WinMergeU.exe\" -f \"*.*\" -e -u -r \"$LOCAL\" \"$REMOTE\"
     cmd = \"C:/Program Files/WinMerge/WinMergeU.exe\" -e -r -u -x -wl -dl \"before/$MERGED\" -dr \"after/$MERGED\" \"$LOCAL\" \"$REMOTE\"
+#    cmd = echo \"before/$BASE\" \"after/$BASE\" \"$LOCAL\" \"$REMOTE\" \"$BASE\"
     trustExitCode = false
 [merge]
     tool = WinMerge
@@ -25,3 +26,4 @@
     difff = diff --name-only
     diffname = diff --name-only --relative
     ls = ls-files
+    cb = checkout -b

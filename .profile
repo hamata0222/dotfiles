@@ -11,7 +11,7 @@ run_other_proc()
     "$@" &
 }
 
-sakura_func()
+func_sakura()
 {
     if [ ${TERM} = "cygwin" ]; then
         run_other_proc sakura `cygpath -aw "$*"`
@@ -63,20 +63,31 @@ dorf_func()
     fi
 }
 
+func_git()
+{
+    if [ $1 == "st" ]; then
+        command git status "${@:2}"
+    else
+        command git "$@"
+    fi
+}
+
 # User defined aliases
 alias ll="ls -lA --color --time-style=+%Y/%m/%d\ %H:%M"
-alias sak=sakura_func
+alias sak=func_sakura
 alias sedcp=sed_copy
 alias pp=popd
 alias difuc="diff -u --color"
 alias dorf=dorf_func
 alias windiff=windiff_func
 alias calw="echo $(($(date +%W) + 1))"
-alias start="explorer.exe ."
+alias start="explorer.exe"
 
 alias svndiff=svndiff_func
 alias svnst=svnst_func
 alias svnclean="svn cleanup --remove-unversioned"
+
+alias git=func_git
 
 # Read git completions
 if [ -f ~/.git-completion.bash ]; then

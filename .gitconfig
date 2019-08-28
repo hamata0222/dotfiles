@@ -10,7 +10,7 @@
 [difftool "WinMerge"]
     path = C:/Program Files/WinMerge/WinMergeU.exe
 #    cmd = \"C:/Program Files/WinMerge/WinMergeU.exe\" -f \"*.*\" -e -u -r \"$LOCAL\" \"$REMOTE\"
-    cmd = \"C:/Program Files/WinMerge/WinMergeU.exe\" -e -r -u -x -wl -dl \"before/$MERGED\" -dr \"after/$MERGED\" \"$LOCAL\" \"$REMOTE\"
+    cmd = \"C:/Program Files/WinMerge/WinMergeU.exe\" -e -r -u -x -wl -dl \"before\" -dr \"after\" \"$(cygpath -w ${LOCAL})\" \"$(cygpath -w ${REMOTE})\"
 #    cmd = echo \"before/$BASE\" \"after/$BASE\" \"$LOCAL\" \"$REMOTE\" \"$BASE\"
     trustExitCode = false
 [merge]
@@ -20,7 +20,7 @@
     path = C:/Program Files/WinMerge/WinMergeU.exe
     cmd = \"C:/Program Files/WinMerge/WinMergeU.exe\" -e -u \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
 [alias]
-    windiff = difftool -y -d -t WinMerge
+    windiff = difftool -y -d --no-symlinks -t WinMerge
     winmerge = mergetool -y -t WinMerge
     logg = log --name-only
     difff = diff --name-only

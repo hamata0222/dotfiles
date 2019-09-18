@@ -67,9 +67,27 @@ func_git()
 {
     if [ $1 == "st" ]; then
         command git status "${@:2}"
+    elif [ $1 == "diffname" ]; then
+        command git diff --name-only --relative "${@:2}"
+    elif [ $1 == "ls" ]; then
+        command git ls-files "${@:2}"
+    elif [ $1 == "cb" ]; then
+        command git checkout -b "${@:2}"
     else
         command git "$@"
     fi
+}
+
+func_calw()
+{
+    pre_lang=${LANG}
+    
+    LANG=en_GB.utf8
+    monday=$(date --date='last Mon' +%d)
+    friday=$(date --date='next Fri' +%d)
+    date --date='next Fri' +"CW%V (%b. ${monday}th - %b. ${friday}th)"
+    
+    LANG=${pre_lang}
 }
 
 # User defined aliases
@@ -80,7 +98,7 @@ alias pp=popd
 alias difuc="diff -u --color"
 alias dorf=dorf_func
 alias windiff=windiff_func
-alias calw="echo $(($(date +%W) + 1))"
+alias calw=func_calw
 alias start="explorer.exe"
 
 alias svndiff=svndiff_func

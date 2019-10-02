@@ -83,12 +83,12 @@ func_calw()
     pre_lang=${LANG}
     
     LANG=en_GB.utf8
-    local monday=$(date --date='last Mon' +%d)
+    local monday=$(date --date='last Mon' +%-d)
     monday=$(func_convert_date_rank ${monday})
     monday=$(date --date='last Mon' +"%b. ${monday}")
-    local friday=$(date --date='next Fri' +%d)
+    local friday=$(date --date='next Fri' +%-d)
     friday=$(func_convert_date_rank ${friday})
-    friday=$(date --date='last Mon' +"%b. ${friday}")
+    friday=$(date --date='next Fri' +"%b. ${friday}")
     date --date='next Fri' +"CW%V (${monday} - ${friday})"
     
     LANG=${pre_lang}

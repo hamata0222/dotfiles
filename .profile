@@ -73,6 +73,8 @@ func_git()
         command git ls-files "${@:2}"
     elif [ $1 = "cb" ]; then
         command git checkout -b "${@:2}"
+    elif [ $1 = "sw" ]; then
+        command git checkout "${@:2}"
     else
         command git "$@"
     fi

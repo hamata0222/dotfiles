@@ -27,3 +27,4 @@
     diffname = diff --name-only --relative
     ls = ls-files
     cb = checkout -b
+    sw = checkout

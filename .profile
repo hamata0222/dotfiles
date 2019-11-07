@@ -23,7 +23,7 @@ func_sakura()
 windiff_func()
 {
     if [ ${TERM} = "cygwin" ]; then
-        run_other_proc /cygdrive/c/Program\ Files/WinMerge/WinMergeU.exe `cygpath -aw "$*"`
+        run_other_proc /cygdrive/c/Program\ Files/WinMerge/WinMergeU.exe `cygpath -aw $*`
     else
         run_other_proc /c/Program\ Files/WinMerge/WinMergeU.exe $@
     fi

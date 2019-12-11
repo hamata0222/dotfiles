@@ -23,7 +23,7 @@ func_sakura()
 windiff_func()
 {
     if [ ${TERM} = "cygwin" ]; then
-        run_other_proc /cygdrive/c/Program\ Files/WinMerge/WinMergeU.exe `cygpath -aw "$*"`
+        run_other_proc /cygdrive/c/Program\ Files/WinMerge/WinMergeU.exe `cygpath -aw $*`
     else
         run_other_proc /c/Program\ Files/WinMerge/WinMergeU.exe $@
     fi
@@ -65,10 +65,63 @@ dorf_func()
 
 func_git()
 {
-    if [ $1 == "st" ]; then
+    if [ $1 = "st" ]; then
         command git status "${@:2}"
+    elif [ $1 = "diffname" ]; then
+        command git diff --name-only --relative "${@:2}"
+    elif [ $1 = "ls" ]; then
+        command git ls-files "${@:2}"
+    elif [ $1 = "cb" ]; then
+        command git checkout -b "${@:2}"
+    elif [ $1 = "sw" ]; then
+        command git checkout "${@:2}"
     else
         command git "$@"
+    fi
+}
+
+func_calw()
+{
+    pre_lang=${LANG}
+    
+    LANG=en_GB.utf8
+    local monday=$(date --date='last Mon' +%-d)
+    monday=$(func_convert_date_rank ${monday})
+    monday=$(date --date='last Mon' +"%b. ${monday}")
+    local friday=$(date --date='next Fri' +%-d)
+    friday=$(func_convert_date_rank ${friday})
+    friday=$(date --date='next Fri' +"%b. ${friday}")
+    date --date='next Fri' +"CW%V (${monday} - ${friday})"
+    
+    LANG=${pre_lang}
+}
+
+func_convert_date_rank()
+{
+    local ret=
+    local lsd=$(($1 % 10))
+    if [ $1 -gt 10 -a $1 -lt 20 ]; then
+        ret=$1"th"
+    elif [ $lsd -eq 1 ]; then
+        ret=$1"st"
+    elif [ $lsd -eq 2 ]; then
+        ret=$1"nd"
+    elif [ $lsd -eq 3 ]; then
+        ret=$1"rd"
+    else
+        ret=$1"th"
+    fi
+    echo $ret
+}
+
+func_start()
+{
+    if [ $# -eq 0 ]; then
+        command explorer.exe .
+    elif [[ $1 = *"/"* ]]; then
+        command pushd "$(dirname $1)" > /dev/null; command explorer.exe "$(basename $1)"; command popd > /dev/null;
+    else
+        command explorer.exe "$1"
     fi
 }
 
@@ -80,8 +133,8 @@ alias pp=popd
 alias difuc="diff -u --color"
 alias dorf=dorf_func
 alias windiff=windiff_func
-alias calw="echo $(($(date +%W) + 1))"
-alias start="explorer.exe"
+alias calw=func_calw
+alias start=func_start
 
 alias svndiff=svndiff_func
 alias svnst=svnst_func

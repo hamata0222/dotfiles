@@ -40,7 +40,7 @@ BreakBeforeBinaryOperators: All
 # BreakConstructorInitializersBeforeComma: false
 # BreakAfterJavaFieldAnnotations: false
 # BreakStringLiterals: true
-ColumnLimit:     80
+ColumnLimit:     120
 # CommentPragmas:  '^ IWYU pragma:'
 # ConstructorInitializerAllOnOneLineOrOnePerLine: false
 # ConstructorInitializerIndentWidth: 4

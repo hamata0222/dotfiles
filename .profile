@@ -149,3 +149,6 @@ fi
 
 # Add path
 export PATH=$PATH:/usr/bin/gibo/
+
+# Colors setting
+eval `dircolors ~/.dircolors`

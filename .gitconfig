@@ -5,6 +5,9 @@
 [core]
     whitespace = cr-at-eol
 
+[commit]
+    verbose = true
+
 [diff]
     tool = WinMerge
 [difftool "WinMerge"]

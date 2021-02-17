@@ -23,7 +23,7 @@ func_sakura()
 windiff_func()
 {
     if [ ${TERM} = "cygwin" ]; then
-        run_other_proc /cygdrive/c/Program\ Files/WinMerge/WinMergeU.exe `cygpath -aw "$*"`
+        run_other_proc /cygdrive/c/Program\ Files/WinMerge/WinMergeU.exe `cygpath -aw $*`
     else
         run_other_proc /c/Program\ Files/WinMerge/WinMergeU.exe $@
     fi
@@ -114,6 +114,17 @@ func_convert_date_rank()
     echo $ret
 }
 
+func_start()
+{
+    if [ $# -eq 0 ]; then
+        command explorer.exe .
+    elif [[ $1 = *"/"* ]]; then
+        command pushd "$(dirname $1)" > /dev/null; command explorer.exe "$(basename $1)"; command popd > /dev/null;
+    else
+        command explorer.exe "$1"
+    fi
+}
+
 # User defined aliases
 alias ll="ls -lA --color --time-style=+%Y/%m/%d\ %H:%M"
 alias sak=func_sakura
@@ -123,7 +134,7 @@ alias difuc="diff -u --color"
 alias dorf=dorf_func
 alias windiff=windiff_func
 alias calw=func_calw
-alias start="explorer.exe"
+alias start=func_start
 
 alias svndiff=svndiff_func
 alias svnst=svnst_func
@@ -138,3 +149,6 @@ fi
 
 # Add path
 export PATH=$PATH:/usr/bin/gibo/
+
+# Colors setting
+eval `dircolors ~/.dircolors`

@@ -18,8 +18,8 @@ set autoindent
 " APPEARANCE
 set list lcs=tab:>-,eol:↵
 colorscheme pablo
-highlight NonText ctermbg=None ctermfg=8 guibg=None guifg=None
-highlight SpecialKey ctermbg=None ctermfg=8 guibg=None guifg=None
+highlight NonText ctermbg=NONE ctermfg=8 guibg=NONE guifg=NONE
+highlight SpecialKey ctermbg=NONE ctermfg=8 guibg=NONE guifg=NONE
 highlight DoubleByteSpace ctermbg=blue guibg=darkgray
 match DoubleByteSpace /　/
 if &term =~ "xterm"

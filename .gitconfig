@@ -4,6 +4,7 @@
 
 [core]
     whitespace = cr-at-eol
+    editor = vim
 
 [commit]
     verbose = true

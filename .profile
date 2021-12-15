@@ -150,5 +150,8 @@ fi
 # Add path
 export PATH=$PATH:/usr/bin/gibo/
 
+# Environment Variable for 'less'
+export LESS='-r -X -K -F'
+
 # Colors setting
 eval `dircolors ~/.dircolors`

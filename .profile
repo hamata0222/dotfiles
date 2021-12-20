@@ -155,3 +155,8 @@ export LESS='-r -X -K -F'
 
 # Colors setting
 eval `dircolors ~/.dircolors`
+
+# Above setting is more common. Below one is special setting.
+# export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0.0
+export DISPLAY=$(ipconfig.exe | grep "IPv4" | head -1 | awk '{print $NF}' | awk 'sub(/\r$/, "")'):0
+

@@ -16,7 +16,7 @@ func_sakura()
     if [ ${TERM} = "cygwin" ]; then
         run_other_proc sakura `cygpath -aw "$*"`
     else
-        run_other_proc sakura $@
+        run_other_proc /mnt/c/Program\ Files\ \(x86\)/sakura/sakura.exe $(wslpath -w $@)
     fi
 }
 
@@ -25,7 +25,7 @@ windiff_func()
     if [ ${TERM} = "cygwin" ]; then
         run_other_proc /cygdrive/c/Program\ Files/WinMerge/WinMergeU.exe `cygpath -aw $*`
     else
-        run_other_proc /c/Program\ Files/WinMerge/WinMergeU.exe $@
+        run_other_proc /mnt/c/Program\ Files/WinMerge/WinMergeU.exe $@
     fi
 }
 
@@ -125,6 +125,15 @@ func_start()
     fi
 }
 
+open_windows_browser()
+{
+    if [ $# -gt 0 ]; then
+        "/mnt/c/Program Files/Google/Chrome/Application/chrome.exe" $(wslpath -w ${1}) &
+    else
+        echo Need an argument.
+    fi
+}
+
 # User defined aliases
 alias ll="ls -lA --color --time-style=+%Y/%m/%d\ %H:%M"
 alias sak=func_sakura
@@ -141,6 +150,8 @@ alias svnst=svnst_func
 alias svnclean="svn cleanup --remove-unversioned"
 
 alias git=func_git
+
+alias winbr=open_windows_browser
 
 # Read git completions
 if [ -f ~/.git-completion.bash ]; then

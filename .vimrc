@@ -7,7 +7,7 @@ set encoding=utf-8
 set fileencodings=utf-8,sjis,euc-jp
 
 " For Japanese
-autocmd InsertLeave * :call system('if [ -x /mnt/c/Users/hamada/zenhan/zenhan.exe ]; then /mnt/c/Users/hamada/zenhan/zenhan.exe 0; fi')
+autocmd InsertLeave * :call system('if [ -x /mnt/c/work/zenhan/zenhan.exe ]; then /mnt/c/work/zenhan/zenhan.exe 0; fi')
 
 " INDENT
 set cindent
@@ -33,7 +33,7 @@ if &term =~ "xterm"
 	augroup END
 endif
 
-" CONPLEMENT
+" COMPLEMENT
 inoremap {} {}<LEFT>
 inoremap {}; {};<LEFT><LEFT>
 inoremap {<ENTER> {<CR>}<ESC><S-o>
@@ -45,3 +45,6 @@ inoremap [] []<LEFT>
 inoremap "" ""<LEFT>
 inoremap '' ''<LEFT>
 inoremap `` ````<LEFT><LEFT>
+
+map <C-K> :py3f /usr/share/vim/addons/syntax/clang-format.py<cr>
+imap <C-K> <c-o>:py3f /usr/share/vim/addons/syntax/clang-format.py<cr>

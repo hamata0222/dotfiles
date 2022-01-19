@@ -1,10 +1,12 @@
-set clipboard=unnamed
+set clipboard+=unnamed
 set number
 set incsearch
 set ignorecase
 set smartcase
 set encoding=utf-8
 set fileencodings=utf-8,sjis,euc-jp
+set laststatus=2
+set wildmenu
 
 " For Japanese
 autocmd InsertLeave * :call system('if [ -x /mnt/c/work/zenhan/zenhan.exe ]; then /mnt/c/work/zenhan/zenhan.exe 0; fi')
@@ -48,3 +50,7 @@ inoremap `` ````<LEFT><LEFT>
 
 map <C-K> :py3f /usr/share/vim/addons/syntax/clang-format.py<cr>
 imap <C-K> <c-o>:py3f /usr/share/vim/addons/syntax/clang-format.py<cr>
+
+" Highlight Search
+nnoremap / :set hlsearch<cr>/
+nnoremap <ESC><ESC> :nohlsearch<cr>

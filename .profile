@@ -1,5 +1,6 @@
 # Export some working directories
 shopt -s cdable_vars
+shopt -s direxpand
 if [ -f ~/.working_dirs ]; then
     source ~/.working_dirs
 fi

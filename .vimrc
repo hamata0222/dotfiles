@@ -35,6 +35,9 @@ if &term =~ "xterm"
 	augroup END
 endif
 
+" To search tags file at upper directories
+set tags=./tags;tags;./TAGS;TAGS;
+
 " COMPLEMENT
 inoremap {} {}<LEFT>
 inoremap {}; {};<LEFT><LEFT>
